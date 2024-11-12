@@ -1,0 +1,13 @@
+#include "resource.h"
+#include <windows.h>
+
+// 图标资源
+IDI_MYICON ICON "serial_monitor.ico"
+IDI_APP_ICON ICON "serial_monitor.ico"
+
+// 主程序图标
+1 ICON "serial_monitor.ico"
+
+// 应用程序清单
+#define RT_MANIFEST 24
+1 RT_MANIFEST "app.manifest"

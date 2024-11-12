@@ -1,0 +1,62 @@
+# Build directories
+build/
+out/
+Release/
+Debug/
+x64/
+Win32/
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.cmake
+
+# Compiled files
+*.exe
+*.dll
+*.lib
+*.obj
+*.o
+*.a
+*.so
+*.dylib
+
+# IDE specific files
+.vs/
+.vscode/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.log
+*.tlog
+*.pdb
+*.idb
+*.ilk
+*.exp
+*.res
+*.lastbuildstate
+*.intermediate.manifest
+
+# MinGW specific
+*.rsp
+*.d
+
+# Project specific
+serial_monitor
