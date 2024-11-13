@@ -1,3 +1,0 @@
-pyserial
-pywin32
-winotify 

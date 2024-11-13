@@ -24,7 +24,7 @@
 
 - CMake 3.10 或更高版本
 
-- MinGW-w64 或 Visual Studio 2019+
+- MinGW-w64
 
 - Windows SDK 10.0 或更高版本
 
@@ -49,22 +49,6 @@
    cmake --build build --config Release
 
    # 打包
-   cd build
-   cpack -C Release
-   ```
-
-### 使用 Visual Studio 编译
-
-1. 克隆项目后，生成 VS 解决方案：
-   
-   ```bash
-   cmake -B build -G "Visual Studio 17 2022" -A x64
-   ```
-
-2. 使用 Visual Studio 打开解决方案或命令行编译：
-   
-   ```bash
-   cmake --build build --config Release
    cd build
    cpack -C Release
    ```

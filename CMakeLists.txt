@@ -4,12 +4,14 @@ project(SerialMonitor VERSION 1.0.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# MinGW 特定的静态链接设置
-if(MINGW)
-    # 完全静态链接，使用 Windows 原生线程
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -mwindows")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -Wl,-Bstatic")
-    set(CMAKE_RC_COMPILER "C:/msys64/mingw64/bin/windres.exe")
+# MinGW 静态链接设置
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -static-libgcc -static-libstdc++ -mwindows")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static -Wl,-Bstatic")
+
+# 自动查找 windres
+find_program(CMAKE_RC_COMPILER NAMES windres mingw32-windres i686-mingw32-windres)
+if(NOT CMAKE_RC_COMPILER)
+    message(FATAL_ERROR "Could not find windres. Please make sure MinGW-w64 is properly installed.")
 endif()
 
 # 添加资源文件
