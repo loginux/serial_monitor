@@ -7,6 +7,11 @@ cmake_minimum_required(VERSION 3.10)
 # VERSION 1.0.0: 项目版本号，用于生成包和安装信息
 project(SerialMonitor VERSION 1.0.0)
 
+if(MSVC)
+add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
+add_compile_options(/utf-8)
+endif()
+
 # 设置 C++ 标准
 # CMAKE_CXX_STANDARD: 使用 C++17
 # CMAKE_CXX_STANDARD_REQUIRED: 强制要求编译器支持指定的 C++ 标准

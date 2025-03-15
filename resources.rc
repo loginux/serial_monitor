@@ -10,4 +10,4 @@ IDI_APP_ICON ICON "serial_monitor.ico"
 
 // 应用程序清单
 #define RT_MANIFEST 24
-1 RT_MANIFEST "app.manifest"
+2 RT_MANIFEST "app.manifest"

@@ -80,7 +80,7 @@ private:
         // 将串口列表菜单添加到主菜单中
         AppendMenuW(hMenu, MF_POPUP, (UINT_PTR)hSubMenu, L"串口列表");
 
-        AppendMenuW(hMenu, MF_STRING, 2, L"版本 V1.2.0");
+        AppendMenuW(hMenu, MF_STRING, 2, L"版本 V1.2.2");
         AppendMenuW(hMenu, MF_STRING, 1, L"退出");
 
         // 初始化系统托盘图标数据
@@ -103,6 +103,8 @@ public:
     {
         hMenu = NULL;
         hSubMenu = NULL;
+        // 初始化当前已连接的串口
+        currentPorts = getSerialPorts();
         initNotification();
     }
 
@@ -178,7 +180,7 @@ public:
 
     void updateSerialPortMenu(HMENU hSubMenu)
     {
-
+        //清除全部串口列表
         while (DeleteMenu(hSubMenu, 0, MF_BYPOSITION))
         {
             ;
@@ -248,7 +250,6 @@ public:
                     // SetupDiGetDeviceRegistryPropertyW 是获取ANSIC编码的字符串
                     // SetupDiGetDeviceRegistryPropertyW 是获取宽字符编码的字符串
                     SetupDiGetDeviceRegistryPropertyW(hDevInfo, &devInfo, SPDRP_DEVICEDESC, NULL, (PBYTE)deviceDesc, sizeof(deviceDesc), NULL);
-                    std::wcout << "Port: " << deviceDesc << std::endl;
                     port.append(":").append(utf16ToUtf8(deviceDesc));
                     ports.insert(port);
 #if 0
@@ -270,13 +271,6 @@ public:
     {
         int ret = 0;
         auto newPorts = getSerialPorts();
-
-        // 首次运行时初始化当前串口列表
-        if (currentPorts.empty())
-        {
-            currentPorts = newPorts;
-            return ret;
-        }
 
         // 检查新增的串口
         for (const auto &port : newPorts)
